@@ -1,0 +1,143 @@
+\pdfoutput=1
+\documentclass{article}
+
+%if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2019
+
+% ready for submission
+% \usepackage{neurips_2019}
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+%     \usepackage[nonatbib,final]{preamble/neurips_2020}
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%     \usepackage[final]{neurips_2019}
+
+% to avoid loading the natbib package, add option nonatbib:
+%     \usepackage[nonatbib]{neurips_2019}
+
+
+% alptex + small aesthetic tweaks + some extra math defs
+\input{preamble/preamble.tex}
+\input{preamble/preamble_math}
+\input{preamble/definitions_basic}
+
+% bibtex import + some code to strip away useless bib info (volume number, isbn, and the ilk), and to standardize capitalization
+% warning: the arxiv uses an outdated bibtex, which causes cryptic and frustrating upload errors 
+% easiest solution: install texlive 2016 from ftp://tug.org/historic/systems/texlive/ (download the ISO) and compile using the texlive 2016 pdflatex and bibtex
+% alternatively, look upon https://github.com/plk/biblatex/wiki/biblatex-and-the-arXiv and despair. 
+\input{preamble/minimalist_biblatex}
+
+\addbibresource{bibs/sensitivity}
+
+%\usepackage[draft]{icml2020_style/icml2020}
+
+\crefformat{equation}{(#2#1#3)}
+\crefformat{figure}{Figure~#2#1#3}
+\crefname{example}{Example}{Examples}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{cor}{Corollary}{Corollaries}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{assumption}{Assumption}{Assumptions}
+
+%********************************************************************
+% Extra definitions
+%********************************************************************
+\usepackage{enumitem} % tight enumerates
+\usepackage[separate-uncertainty=true,multi-part-units=single]{siunitx} % better table control
+
+\newcommand{\maxf}[1]{{\cellcolor[gray]{0.8}} #1}
+\global\long\def\embedding{\lambda}
+
+% Peter's grey box
+\declaretheoremstyle[
+%    postheadspace=\newline,
+spacebelow=\parsep,
+    spaceabove=\parsep,
+  mdframed={
+    backgroundcolor=gray!10!white,     % vv: weird spacing issue, so leaving transpartent for now
+    hidealllines=true, 
+    innertopmargin=8pt, 
+    innerbottommargin=4pt, 
+    skipabove=8pt,
+    skipbelow=10pt,
+    nobreak=true
+}
+]{grayboxed}
+\declaretheorem[style=grayboxed,name=Assumption]{gassumption}
+% \declaretheorem[style=plain]{auxtheorem}
+% \declaretheorem[style=grayboxed,sibling=auxtheorem]{algorithm}
+% \declaretheorem[style=grayboxed,name=Algorithm]{nalgorithm}
+\crefname{gassumption}{Assumption}{Assumptions}
+
+\usepackage{thm-restate}
+
+%********************************************************************
+% Dan Roy's commenting code
+%********************************************************************
+\usepackage{xcolor}
+\input{preamble/commenting.tex}
+%\input{preamble/myvruler.tex}
+%For submission, uncomment these lines to make all annotations render as blank.
+% \renewcommand{\LATER}[1]{}
+% \renewcommand{\fLATER}[1]{}
+% \renewcommand{\TBD}[1]{}
+% \renewcommand{\fTBD}[1]{}
+% \renewcommand{\PROBLEM}[1]{}
+% \renewcommand{\fPROBLEM}[1]{}
+% \renewcommand{\NA}[1]{#1}  %% Note, NA's pass through!
+
+% frontmatter
+\usepackage[affil-it]{authblk}
+
+\title{Paper Template for Writing with Victor}
+\date{}
+\author[1]{Albert Einstein}
+\author[1,2]{Pierre Laplace}
+\affil[1]{Physical Insitute of the Beyond}
+\affil[2]{Ouija Statistical Institute}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Your abstract here
+\end{abstract}
+
+\section{Introduction}
+
+This is a short document illustrating the hodgepodge of latex commands and style files that Victor uses to write papers.
+The main things are:
+\begin{enumerate}
+\item Use human-readable macros in latex math.
+  
+\begin{verbatim}
+Good: \EE[Y \given X]
+Bad: \mathbb{E}[Y | X]
+\end{verbatim}
+\item Use margin commenting commands (the included ones are due to Daniel M. Roy) to avoid breaking flow of the text w/ comments.
+\item Finished documents should be beautiful.
+\end{enumerate}
+
+The most common option for commenting is margin commenting.\fTBD{vv: like this}
+It's also sometimes useful to highly text that \NA{needs attention}.
+Severe issues can be \PROBLEM{flagged as problems}.
+
+
+%\newpage
+\printbibliography
+
+\newpage
+\appendix
+
+% \title{Appendix}
+% \date{\vspace{-5ex}}
+% \maketitle
+
+\section{Left empty}
+Just to make sure appendix formatting looks right.
+
+\end{document}
+
