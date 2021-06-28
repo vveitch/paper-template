@@ -1,23 +1,6 @@
 \pdfoutput=1
 \documentclass{article}
 
-%if you need to pass options to natbib, use, e.g.:
-%     \PassOptionsToPackage{numbers, compress}{natbib}
-% before loading neurips_2019
-
-% ready for submission
-% \usepackage{neurips_2019}
-
-% to compile a preprint version, e.g., for submission to arXiv, add add the
-% [preprint] option:
-%     \usepackage[nonatbib,final]{preamble/neurips_2020}
-
-% to compile a camera-ready version, add the [final] option, e.g.:
-%     \usepackage[final]{neurips_2019}
-
-% to avoid loading the natbib package, add option nonatbib:
-%     \usepackage[nonatbib]{neurips_2019}
-
 
 % alptex + small aesthetic tweaks + some extra math defs
 \input{preamble/preamble.tex}
@@ -26,13 +9,11 @@
 
 % bibtex import + some code to strip away useless bib info (volume number, isbn, and the ilk), and to standardize capitalization
 % warning: the arxiv uses an outdated bibtex, which causes cryptic and frustrating upload errors 
-% easiest solution: install texlive 2016 from ftp://tug.org/historic/systems/texlive/ (download the ISO) and compile using the texlive 2016 pdflatex and bibtex
+% easiest solution: install whatever current arxiv texlive is from ftp://tug.org/historic/systems/texlive/ (download the ISO) and compile using this versions pdflatex and bibtex
 % alternatively, look upon https://github.com/plk/biblatex/wiki/biblatex-and-the-arXiv and despair. 
 \input{preamble/minimalist_biblatex}
 
 \addbibresource{bibs/sensitivity}
-
-%\usepackage[draft]{icml2020_style/icml2020}
 
 \crefformat{equation}{(#2#1#3)}
 \crefformat{figure}{Figure~#2#1#3}
