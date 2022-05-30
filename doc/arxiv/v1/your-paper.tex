@@ -106,6 +106,34 @@ The most common option for commenting is margin commenting.\fTBD{vv: like this}
 It's also sometimes useful to highly text that \NA{needs attention}.
 Severe issues can be \PROBLEM{flagged as problems}.
 
+\section{Further comments}
+When citing multiple references at once use only a single cite command \cite[e.g,][]{Richardson:Hudgens:Gilbert:Fine:2014, Liu:Kuramoto:Stuart:2013}.
+When using a citation as a noun, as in ``According to \citet{Rosenbaum:2010}, ...'', use \texttt{citet}.
+
+In many venues, its common for proofs of theorems to appear only in an appendix. Using the restatable package makes this much easier. For example:
+\begin{restatable}{theorem}{mooncracker}
+\label{thm:mooncracker}
+Assume that the moon is made of cheese. Then, the moon is tasty with crackers, for all crackers that are non-stale.
+\end{restatable}
+
+The way I handle bibliographies is incompatible with natbib. Accordingly, when modifying this template to work with ML conference templates (e.g., NeurIPS or ICML), use their \texttt{nonatbib} option.
+
+\section{Writing Advice}
+We now transition from latex formatting to some free-form writing and style advice.
+My intention is to eventually significantly update this.
+
+Writing is \emph{extremely important}. The impact of your paper is limited by the ability of your audience to understand it. Your typical reader will be a non-expert with limited attention. Work hard to make your paper accessible and beautiful! For your first papers, the writing may take about as long as the actual research. Neglecting writing quality is the most common failure mode I see among new researchers. 
+\begin{enumerate}
+  \item A good first step for writing is to sketch the full paper in bullet points. Make sure the story is totally clear to you. Explain your paper to a couple of friends to nail down the flow. A partial template for bullet point writing: \url{https://docs.google.com/document/d/1KORmM9VsxY29ssod77e0zfKVlBLSesmauSYD5UyfDo4/edit?usp=sharing}
+  \item Some useful links:
+    \begin{enumerate}
+    \item Writing advice from Don Knuth: \url{https://jmlr.csail.mit.edu/reviewing-papers/knuth_mathematical_writing.pdf}. I strongly recommend at least reading the first 10 pages.
+    \item This tool for identifying overly complex or hard-to-understand sentences: \url{https://hemingwayapp.com/}
+    \item This transfomer-based rewriting tool: \url{https://www.wordtune.com/}
+    \end{enumerate}
+  \item Start writing early! Anticipate needing several full revisions of the paper. These often include large changes. For instance, throwing away entire sections, or adding new experiments. It's easy to miss deadlines, or to end up submitting subpar versions of your paper.   
+\end{enumerate}
+
 
 %\newpage
 \printbibliography
@@ -117,8 +145,12 @@ Severe issues can be \PROBLEM{flagged as problems}.
 % \date{\vspace{-5ex}}
 % \maketitle
 
-\section{Left empty}
-Just to make sure appendix formatting looks right.
+\section{Proofs}
+Recall that \cref{thm:mooncracker} is provided to illustrate the use of restatable.
+\mooncracker* 
+\begin{proof}
+  This is straightforward from well-known results of Wallace and Gromit. \PROBLEM{missing citation}
+\end{proof}
 
 \end{document}
 
