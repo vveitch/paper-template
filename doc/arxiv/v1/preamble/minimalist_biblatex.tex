@@ -1,17 +1,22 @@
+\usepackage{csquotes}
 \usepackage[%
 minnames=1,maxnames=99,maxcitenames=2,
 style=alphabetic,
+%style=authoryear,
 doi=false,
 url=false,
-firstinits=true,
+giveninits=true,
 hyperref,
 natbib,
 backend=bibtex,
 sorting=nyt,
 backref=true
 ]{biblatex}%
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+%\setcitestyle{authoryear,round,citesep={;},aysep={,},yysep={;}}
 
-\newbibmacro*{journal}{%
+\renewbibmacro*{journal}{%
   \iffieldundef{journaltitle}
     {}
     {\printtext[journaltitle]{%
@@ -28,7 +33,7 @@ backref=true
     {}
     {\ifthenelse{\ifentrytype{article}\OR\ifentrytype{inbook}%
       \OR\ifentrytype{incollection}\OR\ifentrytype{inproceedings}%
-      \OR\ifentrytype{inreference}}
+      \OR\ifentrytype{inreference}\OR\ifentrytype{misc}}
       {\printtext[title]{%
         \printfield[sentencecase]{title}%
         \setunit{\subtitlepunct}%
@@ -44,7 +49,7 @@ backref=true
 
 \AtEveryBibitem{%
 \ifentrytype{article}{
-    \clearfield{url}%
+%    \clearfield{url}%
     \clearfield{urldate}%
     \clearfield{eprint}
     \clearfield{eid}
@@ -52,14 +57,17 @@ backref=true
 \ifentrytype{book}{
     \clearfield{url}%
     \clearfield{urldate}%
+    \clearfield{eprint}
 }{}
 \ifentrytype{collection}{
     \clearfield{url}%
     \clearfield{urldate}%
+    \clearfield{eprint}
 }{}
 \ifentrytype{incollection}{
     \clearfield{url}%
     \clearfield{urldate}%
+    \clearfield{eprint}
 }{}
 }
 
@@ -69,7 +77,7 @@ backref=true
     \clearfield{series}%%
     \clearfield{volume}
     \clearfield{month}
-    \clearfield{eprint}
+    % \clearfield{eprint}
     \clearfield{isbn}
     \clearfield{issn}
     \clearlist{location}
